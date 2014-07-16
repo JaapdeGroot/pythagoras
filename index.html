@@ -1,0 +1,250 @@
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Bepaling van de grootte van een van de zijden</title>
+
+<script type="text/javascript">
+
+var rhz1=3;
+var rhz2=4;
+var lz=5;
+
+var bekend1="???";
+var bekend2=rhz2;
+var bekend3=lz;
+
+var rhz1k=rhz1*rhz1;
+var rhz2k=rhz2*rhz2;
+var lzk=lz*lz;
+
+var p=0;
+var q=0;
+
+var score=0;
+
+var soort=0;
+
+var invoer1="";
+var invoer2="";
+var invoer3="";
+var invoer4="";
+var invoer5="";
+var invoer6="";
+
+var over=0;    
+
+function starten()  {
+invoer1="";
+invoer2="";
+invoer3="";
+invoer4="";
+invoer5="";
+invoer6="";    
+
+document.formulier.invoerveld1.value = invoer1;
+document.formulier.invoerveld2.value = invoer2;
+document.formulier.invoerveld3.value = invoer3;
+document.formulier.invoerveld4.value = invoer4;
+document.formulier.invoerveld5.value = invoer5;
+document.formulier.invoerveld6.value = invoer6;
+
+document.getElementById("geg1").innerHTML = "De lengte van de ene rechthoekszijde (a) is "+bekend1+" cm.";
+document.getElementById("geg2").innerHTML = "De lengte van de andere rechtzoekszijde (b) is "+bekend2+" cm.";
+document.getElementById("geg3").innerHTML = "De lengte van de lange/schuine zijde (c) is "+bekend3+" cm.";
+            }               
+
+function bereken() {
+invoer1 = document.formulier.invoerveld1.value;
+invoer2 = document.formulier.invoerveld2.value;
+invoer3 = document.formulier.invoerveld3.value;
+invoer4 = document.formulier.invoerveld4.value;
+invoer5 = document.formulier.invoerveld5.value;
+invoer6 = document.formulier.invoerveld6.value;
+
+
+rhz1k=rhz1*rhz1
+rhz2k=rhz2*rhz2
+lzk=lz*lz
+
+score=0;
+
+
+if (invoer1 == rhz1) {
+	score = score +1 }
+	else uitvoer1 = "fout";
+
+if (invoer2 == rhz1k) {
+	score = score +1 }
+	else uitvoer2 = "fout";
+
+if (invoer3 == rhz2) {
+	score = score +1 }
+	else uitvoer3 = "fout";
+
+if (invoer4 == rhz2k) {
+	score = score +1 }
+	else uitvoer4 = "fout";
+
+if (invoer5 == lz) {
+	score = score +1 }
+	else uitvoer5 = "fout";
+
+if (invoer6 == lzk) {
+	score = score +1 }
+	else uitvoer6 = "fout";
+
+if (score == 6) {
+	alert ("GOED GEDAAN !")
+	over=1}
+	
+if (score == 5) {
+	alert ("JAMMER. 1 FOUTJE TE VERBETEREN!")}
+
+if (score == 4) {
+	alert ("HELAAS. 2 FOUTJES TE VERBETEREN!")}
+
+if (score == 3) {
+	alert ("SLORDIG. 3 FOUTEN TE VERBETEREN!")}
+
+if (score == 2) {
+	alert ("ERG. 4 FOUTEN OM TE VERBETEREN!")}
+
+if (score == 1) {
+	alert ("SLECHT GEDAAN. 5 FOUTEN OM TE VERBETEREN!")}
+
+if (score == 0) {
+	alert ("TELEURSTELLEND. ALLES FOUT - PROBEER OPNIEUW")}
+
+
+		}
+
+
+function opnieuw() {
+
+if (over==0) {
+	bereken()}
+else {
+
+invoer1="";
+invoer2="";
+invoer3="";
+invoer4="";
+invoer5="";
+invoer6="";
+over=0;    
+
+do {
+	do {
+	p=Math.floor(Math.random()*5)+1;
+	q=Math.floor(Math.random()*5)+1;
+		}
+
+	while (2*p*q==rhz2)}
+
+while (p-q==0);
+
+
+rhz1=Math.abs(p*p-q*q);
+rhz2=2*p*q;
+rhz1k=rhz1*rhz1;
+rhz2k=rhz2*rhz2;
+lzk=rhz1k+rhz2k;
+lz=Math.pow(lzk,0.5);
+
+document.formulier.invoerveld1.value = invoer1;
+document.formulier.invoerveld2.value = invoer2;
+document.formulier.invoerveld3.value = invoer3;
+document.formulier.invoerveld4.value = invoer4;
+document.formulier.invoerveld5.value = invoer5;
+document.formulier.invoerveld6.value = invoer6;
+
+soort=Math.floor(Math.random()*3)+1;
+
+bekend1=rhz1;
+bekend2=rhz2;
+bekend3=lz;
+
+if (soort==1) bekend1="???";
+if (soort==2) bekend2="???";
+if (soort==3) bekend3="???";
+
+document.getElementById("geg1").innerHTML = "De lengte van de ene rechthoekszijde (a) is "+bekend1+" cm.";
+document.getElementById("geg2").innerHTML = "De lengte van de andere rechtzoekszijde (b) is "+bekend2+" cm.";
+document.getElementById("geg3").innerHTML = "De lengte van de lange/schuine zijde (c) is "+bekend3+" cm.";
+	}
+		}
+
+
+</script>
+
+<base target="_self">
+
+</head>
+
+<body>
+
+  <h3>
+   <font color="#0000FF">
+   Bereken de lengte van de derde zijde als de twee andere bekend zijn.</font> 
+  </h3>
+
+  <font color="#0000FF">
+
+<form name="formulier">
+
+
+<p>  Van een rechthoekige driehoek zijn lengtes van twee van de drie zijden bekend.</p>
+
+<p>  Bereken de lengte van de zijde waarvan de lengte onbekend is.</p>
+
+
+<input class="knop" type="button" value="start" onclick="starten();">
+<br>
+<div id="geg1"> </div>
+<div id="geg2"> </div>
+<div id="geg3"> </div>
+<br>
+
+  <table border="1" width="328" height="170">
+    <tr>
+      <td width="75" align="left" height="19">&nbsp; zijde</td>
+      <td width="148" align="left" height="19">
+        <p align="center">&nbsp; lengte</p>
+      </td>
+      <td width="165" align="left" height="19">
+        <p align="center">&nbsp; kwadraat</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td width="75" align="left" height="35">&nbsp; a</td>
+      <td width="148" align="center" height="35"><input style="width: 45px;" type="text" name="invoerveld1"></td>
+      <td width="165" align="center" height="35"><input style="width: 45px;" type="text" name="invoerveld2"></td>
+    </tr>
+
+    <tr>
+      <td width="75" align="left" height="30">&nbsp; b</td>
+      <td width="148" align="center" height="30"><input style="width: 45px;" type="text" name="invoerveld3"></td>
+      <td width="165" align="center" height="30"><input style="width: 45px;" type="text"name="invoerveld4"></td>
+    </tr>
+
+    <tr>
+      <td width="75" align="left" height="38">&nbsp; c</td>
+      <td width="148" align="center" height="38"><input style="width: 45px;" type="text" name="invoerveld5"></td>
+      <td width="165" align="center" height="38"><input style="width: 45px;" type="text" name="invoerveld6"></td>
+    </tr>
+
+  </table>
+
+ 
+<font color="#0000FF">
+	
+<br>
+
+	<input class="knop" type="button" value="controleer" onclick="bereken();">
+        <input class="knop" type="button" value="nieuwe opgave" onclick="opnieuw();">
+    </font>
+  </form>
+
+</body>
+
